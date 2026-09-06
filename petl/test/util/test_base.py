@@ -2,6 +2,7 @@ from __future__ import absolute_import, print_function, division
 
 import pickle
 import shelve
+from contextlib import closing
 
 import pytest
 
@@ -147,9 +148,9 @@ def test_records_legacy_pickle():
 def test_recordlookup_shelve(tmpdir):
     filename = str(tmpdir.join('records'))
     table = [['foo', 'bar'], ['a', 1], ['a', 2]]
-    with shelve.open(filename) as database:
+    with closing(shelve.open(filename)) as database:
         recordlookup(table, 'foo', dictionary=database)
-    with shelve.open(filename) as database:
+    with closing(shelve.open(filename)) as database:
         eq_([1, 2], [record.bar for record in database['a']])
         eq_(['a', 'a'], [record['foo'] for record in database['a']])
 
