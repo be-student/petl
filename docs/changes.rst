@@ -10,6 +10,9 @@ Unreleased
 Version 1.7.25
 --------------
 
+* docs: demonstrate field-name and index access in row-aware conversions,
+  including column names containing spaces.
+  By :user:`be-student`, :issue:`671`.
 * chore: improve CI/CD workflows, update documentation
   By :user:`juarezr`, :issue:`709`.
 * feat: add truncate argument to todb function
